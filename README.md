@@ -9,8 +9,8 @@ $ docker run -p 8080:8080 -v ./endpoints.json:/home/node/app/config/endpoints.js
 
 The web service endpoints can be configured through a json file mapped to `/home/node/app/config/endpoints.json` container's file.
 
-The following properties can be seted up for each endpoint:
-- `path`: The endpoint path
+The following properties can be set up for each endpoint:
+- `path`: The endpoint path. Path variables can be defined using `:` prefix, like in `:id`
 - `method`: HTTP method (`post`, `get`, `put`, `delete`, etc)
 - `responseBody`: JSON string containing the response body (optional)
 
