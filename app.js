@@ -44,7 +44,8 @@ app.use(logRequestStart)
  * Register endpoints mapped on 'config/endpoints.json'
  */
 const registerEndpoints = function() {
-  var endpoints = JSON.parse(fs.readFileSync('config/endpoints.json', 'utf8'));
+  const config = JSON.parse(fs.readFileSync('config/mock-rest-config.json', 'utf8'));
+  const endpoints = config.endpoints
   
   endpoints.forEach(endpoint => {
 
