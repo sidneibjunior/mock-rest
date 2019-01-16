@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var pretty = require('express-prettify');
 var fs = require('fs');
+var basicAuth = require('basic-auth')
 
 const BgCyan =  "\x1b[46m"
 const BgRed = "\x1b[101m"
@@ -39,6 +40,25 @@ const logRequestStart = (req, res, next) => {
 }
 app.use(logRequestStart)
 
+const authorizeRequest = function(req, res, config) {
+  const configAuth = config.authorization
+  if (configAuth && configAuth.type == "basic") {
+    const credentials = basicAuth(req)
+
+    const user = configAuth.username
+    const pass = configAuth.password
+ 
+    if (!credentials || credentials.name != user || credentials.pass != pass) {
+      res.statusCode = 401
+      res.setHeader('WWW-Authenticate', 'Basic realm="example"')
+      res.end('Access denied')
+
+      return false
+    }
+  }
+
+  return true;
+}
 
 /**
  * Register endpoints mapped on 'config/endpoints.json'
@@ -53,7 +73,11 @@ const registerEndpoints = function() {
     const body = endpoint.responseBody && JSON.parse(endpoint.responseBody, 'utf8') || {}
 
     app[endpoint.method](endpoint.path, (req, res) => {
-      res.status(200).send(body)
+      
+      if (authorizeRequest(req, res, config)) {
+        res.status(200).send(body)
+      }
+      
     });
   });
 }

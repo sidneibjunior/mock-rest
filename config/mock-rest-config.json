@@ -1,4 +1,9 @@
 {
+    "authorization": {
+        "type": "basic",
+        "username": "api-user",
+        "password": "password"
+    },
     "endpoints": [
         {
             "path": "/api/comments/:id",

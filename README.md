@@ -19,6 +19,11 @@ The following properties can be set up for each endpoint:
 
 ```
 {
+    "authorization": {
+        "type": "basic",
+        "username": "api-user",
+        "password": "password"
+    },
     "endpoints": [
         {
             "path": "/api/comments/:id",
@@ -33,6 +38,10 @@ The following properties can be set up for each endpoint:
     ]
 }
 ```
+
+### Authorization
+The web service authorization can be configured through the optional `authorization` key of `mock-rest-config.json` config file. If the `authorization` key is not present on config file, `No Auth` will be used.
+Currently only `basic` authorization type is supported.
 
 #### Port
 The container's port on which the server will run can be configured through environment variable `PORT`.
