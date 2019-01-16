@@ -39,7 +39,7 @@ The following properties can be set up for each endpoint:
 }
 ```
 
-### Authorization
+#### Authorization
 The web service authorization can be configured through the optional `authorization` key of `mock-rest-config.json` config file. If the `authorization` key is not present on config file, `No Auth` will be used.
 Currently only `basic` authorization type is supported.
 
