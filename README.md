@@ -30,5 +30,7 @@ The following properties can be set up for each endpoint:
     ]
 }
 ```
+### Preview
+![Mock REST](https://github.com/sidneibjunior/mock-rest/raw/master/docs/mock-rest.gif)
 
 Github repository: https://github.com/sidneibjunior/mock-rest
