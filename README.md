@@ -30,3 +30,5 @@ The following properties can be set up for each endpoint:
     ]
 }
 ```
+
+Github repository: https://github.com/sidneibjunior/mock-rest
