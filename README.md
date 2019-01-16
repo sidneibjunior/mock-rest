@@ -4,9 +4,12 @@ Customizable mock REST web service.
 The following command runs the container and exposes the REST mock web service to host port `8080`.
 
 ```
-$ docker run -p 8080:8080 -v /tmp/mock-rest-config.json:/home/node/app/config/mock-rest-config.json sidneibjunior/mock-rest:latest
+$ docker run -p 8080:8080 -e "PORT=8080" -v /tmp/mock-rest-config.json:/home/node/app/config/mock-rest-config.json sidneibjunior/mock-rest:latest
 ```
 
+### Configuration
+
+#### Endpoints
 The web service endpoints can be configured through a json file mapped to `/home/node/app/config/mock-rest-config.json` container's file.
 
 The following properties can be set up for each endpoint:
@@ -30,6 +33,10 @@ The following properties can be set up for each endpoint:
     ]
 }
 ```
+
+#### Port
+The container's port on which the server will run can be configured through environment variable `PORT`.
+
 ### Preview
 ![Mock REST](https://github.com/sidneibjunior/mock-rest/raw/master/docs/mock-rest.gif)
 
