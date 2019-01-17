@@ -14,6 +14,8 @@ const app = express();
 app.use(pretty({ query: 'pretty' }));
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
+app.use(bodyParser.raw());
+app.use(bodyParser.text());
 
 /** 
  * Requests logger
